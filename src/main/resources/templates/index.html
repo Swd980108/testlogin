@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>主页</title>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js" ></script>
+		<script>
+			$(document).ready(function(){
+				var userJsonStr = sessionStorage.getItem('loginUser');
+				loginUser = JSON.parse(userJsonStr);
+				console.log(loginUser)
+				if(loginUser==null){
+					location.href="login.html"
+				}else{
+					$("#userid").text(loginUser.userid);
+					$("#username").text(loginUser.username);
+					$("#password").text(loginUser.password)
+				}
+				
+				
+//				$("#iflogin").click(function(){
+//					$.ajax({
+//						type:"get",
+//						url:"http://localhost:8888/user/iflogin",
+////						async:true,
+//						 xhrFields: {  
+//					      withCredentials: true  
+//					   },
+////					   crossDomain: true,
+////					   success:function(){
+////					   	  alert("success")
+////					   },
+//					   error:function(){
+//					   	  alert("error")
+//					   }
+//					});
+//				});
+				
+				
+			})
+		</script>
+	</head>
+	<body>
+		<h5>用户编号：<span id="userid"></span></h5>
+		<h5>用户名：<span id="username"></span></h5>
+		<h5>密码：<span id="password"></span>	</h5>
+		<hr />
+		<a href="http://localhost:8888/user/iflogin">是否登陆</a>
+	</body>
+</html>
